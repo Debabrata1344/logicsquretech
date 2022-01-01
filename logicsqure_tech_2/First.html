@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>California Cafe Directory</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+      #data td{
+        text-align: center;
+      }
+      
+
+#table-wrapper .column5,
+#table-wrapper .column4,
+#table-wrapper .column6{
+  text-align: left;
+}
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12" id="header-wrapper">
+          <div class="container">
+            <div class="row">
+              <div class="col-12" id="header">
+                <h2>California Cafe Directory</h2>
+              </div>
+              <div class="col-12" id="search-wrapper">
+                <input id="search" type="text" placeholder="Search your favorite cafes!" onkeyup="searchFun()">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-12" id="table-wrapper">
+              <table id="myTable">
+                <thead>
+                  <tr class="table100-head">
+                    <th class="column1">S No</th>
+                    <th class="column2">Cafe Name</th>
+                    <th class="column3">Address</th>
+                    <th class="column4">Postal Code</th>
+                    <th class="column5">Lat</th>
+                    <th class="column6">Long</th>
+                  </tr>
+                </thead>
+                <tbody id="data">
+                   
+                </tbody>
+              </table>
+              <script>
+                const searchFun=()=>{
+                  let search_data=document.getElementById('search').value.toUpperCase();
+                  let myTab=document.getElementById('myTable');
+                  let tr=myTab.getElementsByTagName('tr');
+                  for(var i=0;i<tr.length;i++){
+                    let td=tr[i].getElementsByTagName('td')[1];
+                    if(td){
+                      let text=td.textContent || td.innerHTML;
+                      if(text.toUpperCase().indexOf(search_data)>-1){
+                        tr[i].style.display="";
+                        console.log("hlo");
+                        
+                      }else{
+                        tr[i].style.display="none";
+                      }
+                    }
+                  }
+                  
+                }
+        
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js">
+    </script>
+  </body>
+</html>
